@@ -23,7 +23,7 @@ const OngoingList = () => {
             description,
         };
         console.log(ongoingData)
-        const success = await axios.post('http://localhost:5000/ongoing', ongoingData);
+        const success = await axios.post('https://collaborative-task-server.onrender.com/ongoing', ongoingData);
         if (success) {
             alert('Do you want to make a product ?')
         }
@@ -42,7 +42,7 @@ const OngoingList = () => {
                         </div>
                         <div className="card shrink-0 w-full max-w-lg max-h-lg shadow-2xl bg-base-100">
                             <form onSubmit={handleCreateOngoing} className="card-body">
-                                <h1 className="text-4xl font-bold text-center">Add a Task !</h1>
+                                <h1 className="text-4xl font-bold text-center">Add a Ongoing List !</h1>
                                 {/* title  */}
                                 <div className="form-control">
                                     <label className="label">

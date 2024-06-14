@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const SingleTask = ({ task, oneDelete }) => {
     const handleDelete = async () => {
 
-        const deleteSuccess = await axios.delete(`http://localhost:5000/task/${task?._id}`);
+        const deleteSuccess = await axios.delete(`https://collaborative-task-server.onrender.com/task/${task?._id}`);
         if (deleteSuccess) {
             alert('Do you want to delete a product ?')
 

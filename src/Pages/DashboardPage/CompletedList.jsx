@@ -24,7 +24,7 @@ const CompletedList = () => {
             description,
         };
         console.log(completedData)
-        const success = await axios.post('http://localhost:5000/completed', completedData);
+        const success = await axios.post('https://collaborative-task-server.onrender.com/completed', completedData);
         if (success) {
             alert('Do you want to make a product ?')
         }
@@ -43,7 +43,7 @@ const CompletedList = () => {
                         </div>
                         <div className="card shrink-0 w-full max-w-lg max-h-lg shadow-2xl bg-base-100">
                             <form onSubmit={handleCreateCompleted} className="card-body">
-                                <h1 className="text-4xl font-bold text-center">Add a Task !</h1>
+                                <h1 className="text-4xl font-bold text-center">Add a Completed list !</h1>
                                 {/* title  */}
                                 <div className="form-control">
                                     <label className="label">

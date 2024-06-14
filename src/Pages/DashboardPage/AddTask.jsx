@@ -23,7 +23,7 @@ const AddTask = () => {
             description,
         };
         console.log(taskData)
-        const success = await axios.post('http://localhost:5000/task', taskData);
+        const success = await axios.post('https://collaborative-task-server.onrender.com/task', taskData);
         if (success) {
             alert('Do you want to make a product ?')
         }

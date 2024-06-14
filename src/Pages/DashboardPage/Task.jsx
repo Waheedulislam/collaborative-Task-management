@@ -19,7 +19,7 @@ const Task = () => {
     useEffect(() => {
         // task 
         async function load() {
-            const data = await axios.get('http://localhost:5000/task')
+            const data = await axios.get('https://collaborative-task-server.onrender.com/task')
 
             if (data?.status == 200) {
                 setTasks(data?.data)
@@ -29,7 +29,7 @@ const Task = () => {
 
         // Ongoing 
         async function ongoingLoad() {
-            const data = await axios.get('http://localhost:5000/ongoing')
+            const data = await axios.get('https://collaborative-task-server.onrender.com/ongoing')
 
             if (data?.status == 200) {
                 setOngoing(data?.data)
@@ -39,7 +39,7 @@ const Task = () => {
 
         // Completed 
         async function completedLoad() {
-            const data = await axios.get('http://localhost:5000/completed')
+            const data = await axios.get('https://collaborative-task-server.onrender.com/completed')
 
             if (data?.status == 200) {
                 setCompleted(data?.data)
@@ -74,6 +74,7 @@ const Task = () => {
                             className="input input-bordered w-24 md:w-auto"
                         />
                     </div>
+                    <h1 className="text-3xl font-semibold ml-28">TeamBoard Software</h1>
                 </div>
                 <div className="flex-none gap-2">
                     <a className="btn btn-ghost text-xl ">{user?.displayName}</a>

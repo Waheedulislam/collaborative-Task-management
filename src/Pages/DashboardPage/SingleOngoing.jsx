@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const SingleOngoing = ({ ongoing, oneDelete }) => {
     const handleDelete = async () => {
 
-        const deleteSuccess = await axios.delete(`http://localhost:5000/ongoing/${ongoing?._id}`);
+        const deleteSuccess = await axios.delete(`https://collaborative-task-server.onrender.com/ongoing/${ongoing?._id}`);
         if (deleteSuccess) {
             alert('Do you want to delete a product ?')
 
