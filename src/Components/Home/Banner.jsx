@@ -19,7 +19,7 @@ const Banner = () => {
                         <p className="mb-5 text-xl font-bold">
                             TeamBoard facilitates seamless connections for over 250,000 teams,reducing the manual effort in work processes.
                         </p>
-                        <Link to={'/'} className="btn btn-primary">Let’s Explore</Link>
+                        <Link to={'/dashboard'} className="btn btn-primary">Let’s Explore</Link>
                     </div>
                 </div>
             </div>

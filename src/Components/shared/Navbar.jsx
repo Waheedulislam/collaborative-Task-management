@@ -1,6 +1,21 @@
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../Firebase/firebase.config";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+    const [user] = useAuthState(auth);
+    const [signOut] = useSignOut(auth);
+    // signOut 
+    const handleSignOut = () => {
+        const successSignOut = signOut();
+        if (successSignOut) {
+            alert('Do you want to logout...?')
+            toast.success('Successfully Logout')
+
+        }
+    }
+
     return (
         <div className="px-10">
             <div className="navbar bg-base-100">
@@ -39,17 +54,30 @@ const Navbar = () => {
                             <Link to={""} className="btn btn-ghost">
                                 Templates
                             </Link>
-                            <Link to={""} className="btn btn-ghost">
-                                Dashboard
-                            </Link>
-                            <div className="flex mt-2 justify-center">
-                                <Link to={"/login"} className="btn btn-ghost mr-2">
-                                    Login
-                                </Link>
-                                <Link to={"/register"} className="btn btn-ghost">
-                                    Register
-                                </Link>
-                            </div>
+                            {
+                                !user?.email ?
+                                    <>
+                                        <div className="ml-20">
+                                            <Link to={"/login"} className="btn btn-ghost mr-2">
+                                                Login
+                                            </Link>
+                                            <Link to={"/register"} className="btn  btn-ghost">
+                                                Register
+                                            </Link>
+                                        </div>
+                                    </> :
+                                    <>
+                                        <Link to={'/dashboard'} className="btn btn-neutral  text-white">DashBoard</Link>
+
+                                        <div className="avatar flex justify-center align-middle ">
+                                            <div className="w-12   my-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                                <img src={user?.photoURL || '../../../public/user-profile-icon-free-vector.jpg'} />
+                                            </div>
+                                        </div>
+                                        <button className="btn btn-error text-white" onClick={handleSignOut}>Log Out</button>
+
+                                    </>
+                            }
                         </ul>
                     </div>
                     <Link to={"/"} className="btn btn-ghost text-2xl font-bold">
@@ -72,22 +100,37 @@ const Navbar = () => {
                             <Link to={""} className="btn btn-ghost mr-2">
                                 Templates
                             </Link>
-                            <Link to={""} className="btn btn-ghost mr-2">
-                                Dashboard
-                            </Link>
                         </div>
-                        <div className="ml-20">
-                            <Link to={"/login"} className="btn btn-ghost mr-2">
-                                Login
-                            </Link>
-                            <Link to={"/register"} className="btn  btn-ghost">
-                                Register
-                            </Link>
-                        </div>
+                        {
+                            !user?.email ?
+                                <>
+                                    <div className="ml-20">
+                                        <Link to={"/login"} className="btn btn-ghost mr-2">
+                                            Login
+                                        </Link>
+                                        <Link to={"/register"} className="btn  btn-ghost">
+                                            Register
+                                        </Link>
+                                    </div>
+                                </> :
+                                <>
+                                    <div className="flex gap-4 justify-center">
+                                        <Link to={'/dashboard'} className="btn btn-neutral text-white">DashBoard</Link>
+
+                                        <div className="avatar">
+                                            <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                                <img src={user?.photoURL || '../../../public/user-profile-icon-free-vector.jpg'} />
+                                            </div>
+                                        </div>
+                                        <button className="btn btn-error text-white" onClick={handleSignOut}>Log Out</button>
+                                    </div>
+
+
+                                </>
+                        }
+
                     </ul>
-
                 </div>
-
             </div>
         </div>
     );

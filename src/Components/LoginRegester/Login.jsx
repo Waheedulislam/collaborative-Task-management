@@ -11,7 +11,6 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -33,6 +32,8 @@ const Login = () => {
         }
     }, [navigate, user, from])
     console.log(loading, error)
+
+
 
     return (
         <div>
@@ -81,6 +82,7 @@ const Login = () => {
                             <div className="flex flex-col justify-center w-full ">
                                 <div className="divider divider-neutral">OR</div>
                             </div>
+
                         </form>
                         <div className="mx-7 mb-5">
                             <GoogleLogin />
