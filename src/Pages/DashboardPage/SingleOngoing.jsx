@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const SingleOngoing = ({ ongoing, oneDelete }) => {
@@ -25,8 +26,7 @@ const SingleOngoing = ({ ongoing, oneDelete }) => {
                     <p>
                         {ongoing?.description?.length > 30 ? ongoing?.description?.slice(0, 60) : ongoing?.description}
                     </p>
-
-                    <button className="btn btn-primary">Edit</button>
+                    <Link className="btn btn-primary" to={''}>Edit</Link>
 
                     <button onClick={handleDelete} className="btn btn-error text-white">Delete</button>
 

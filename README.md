@@ -1,8 +1,30 @@
-# React + Vite
+# TeamBoard + Software
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## [Live-Site](https://collaborative-task-management.vercel.app/)
 
-Currently, two official plugins are available:
+Click  here to Live-Site-link: https://collaborative-task-management.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## This website details:
+***
+A list of TeamBoard Software website used within the project and details:
+
+1)  It is a React Tools way webpage.
+
+2)  It has been use Npm Deadlines hook.
+
+3)  It has been used  firebase framework .
+
+4)  The server site mongodb has been used on this website. And has been  deploy this site Render framework.
+
+5)  It has been used many framework. firebase react hooks,TailWind,DaisyUI css Component,react-tost etc.
+
+6)  Many important things have been used in the routes.
+
+7) Register and login has been used email-verification and forget-password.
+
+8) Its website is deploy by Vercel framework & server site deploy Render.
+
+9) It has been used by dashboard task management developers.
+
+10) The full website has been responsive on mobile, tablet, and PC.
+

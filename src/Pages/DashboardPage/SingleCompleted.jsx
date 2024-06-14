@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const SingleCompleted = ({ completed, oneDelete }) => {
@@ -25,8 +26,7 @@ const SingleCompleted = ({ completed, oneDelete }) => {
                     <p>
                         {completed?.description?.length > 30 ? completed?.description?.slice(0, 60) : completed?.description}
                     </p>
-
-                    <button className="btn btn-primary">Edit</button>
+                    <Link className="btn btn-primary" to={''}>Edit</Link>
 
                     <button onClick={handleDelete} className="btn btn-error text-white">Delete</button>
 

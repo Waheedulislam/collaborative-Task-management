@@ -15,7 +15,7 @@ const Task = () => {
     const [tasks, setTasks] = useState();
     const [ongoing, setOngoing] = useState();
     const [completed, setCompleted] = useState();
-    console.log(tasks)
+
 
 
     useEffect(() => {
@@ -143,7 +143,7 @@ const Task = () => {
 
                     </div>
                     {
-                        tasks?.map(task => <SingleTask key={task?.id} task={task} oneDelete={handleDeleteTask} />)
+                        tasks?.map(task => <SingleTask key={task?._id} task={task} oneDelete={handleDeleteTask} />)
                     }
 
 
@@ -164,7 +164,7 @@ const Task = () => {
                     </div>
 
                     {
-                        ongoing?.map(ongoing => <SingleOngoing key={ongoing?.id} ongoing={ongoing} oneDelete={handleDeleteOngoing} />)
+                        ongoing?.map(ongoing => <SingleOngoing key={ongoing?._id} ongoing={ongoing} oneDelete={handleDeleteOngoing} />)
                     }
 
 
@@ -179,7 +179,7 @@ const Task = () => {
 
                     </div>
                     {
-                        completed?.map(completed => <SingleCompleted key={completed?.id} completed={completed} oneDelete={handleDeleteCompleted} />)
+                        completed?.map(completed => <SingleCompleted key={completed?._id} completed={completed} oneDelete={handleDeleteCompleted} />)
                     }
                 </div>
             </div>

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
@@ -27,8 +28,7 @@ const SingleTask = ({ task, oneDelete }) => {
                     <p>
                         {task?.description?.length > 30 ? task?.description?.slice(0, 60) : task?.description}
                     </p>
-                    <button className="btn btn-primary">Edit</button>
-
+                    <Link className="btn btn-primary" to={''}>Edit</Link>
                     <button onClick={handleDelete} className="btn btn-error text-white">Delete</button>
 
                 </div>
