@@ -61,7 +61,7 @@ const Task = () => {
                     </h1>
                 </div>
                 <div >
-                    <Link className="btn btn-outline text-white btn-primary" to={'/dashboard/to-do'} ><img className=' w-12 h-12 ' src={plusIcon} alt="" />Add a Task</Link>
+                    <Link className="btn btn-outline text-white btn-primary" to={'/dashboard/addTask'} ><img className=' w-12 h-12 ' src={plusIcon} alt="" />Add a Task</Link>
                 </div>
             </div>
             {/* nabvar 2 end */}
@@ -72,7 +72,7 @@ const Task = () => {
                     <div className=" bg-base-100 mb-2 border-2 flex justify-center">
                         <h2 className="card-title mr-8">To-Do List</h2>
 
-                        <Link to={'/dashboard/to-do'} ><img className='ml-24 w-12 h-12' src={plusIcon} alt="" /></Link>
+                        <Link to={'/dashboard/addTask'} ><img className='ml-24 w-12 h-12' src={plusIcon} alt="" /></Link>
 
                     </div>
                     <div className="card w-80 h-auto c mb-6  shadow-2xl">
