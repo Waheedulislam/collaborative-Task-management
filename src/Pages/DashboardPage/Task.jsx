@@ -116,7 +116,7 @@ const Task = () => {
             <div className="navbar bg-base-100 my-4 px-10">
                 <div className="flex-1">
                     <h1 className=" text-3xl text-center font-semibold">
-                        Task
+                        Web Developer Task
                     </h1>
                 </div>
                 <div >
