@@ -77,7 +77,7 @@ const Task = () => {
                     </div>
                     <div className="card w-80 h-auto c mb-6  shadow-2xl">
                         <div className="card-body">
-                            <h2 className="card-title"> title!</h2>
+                            <h2 className="card-title">Title </h2>
                             <p>If a dog chews shoes whose shoes does he choose?</p>
                             <p>deadlines</p>
                             <p>priority</p>
