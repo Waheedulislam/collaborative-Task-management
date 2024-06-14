@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import taskIcon from '../assets/photo/task-1.png'
 import dashboardIcon from '../assets/photo/dashboard.png'
-
+import userPhoto from '../../src/assets/photo/user-profile-icon-free-vector.jpg'
 const DashboardLayout = () => {
     const [signOut] = useSignOut(auth);
     const [user] = useAuthState(auth);
@@ -45,7 +45,7 @@ const DashboardLayout = () => {
                         <div className="flex justify-center">
                             <div className="avatar">
                                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src={user?.photoURL || '../../../public/user-profile-icon-free-vector.jpg'} />
+                                    <img src={user?.photoURL || `${userPhoto}`} />
                                 </div>
                             </div>
                             <a className=" ml-5 mt-3 text-center font-semibold text-2xl ">{user?.displayName}</a>

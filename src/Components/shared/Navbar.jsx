@@ -2,7 +2,7 @@ import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../Firebase/firebase.config";
 import { toast } from "react-toastify";
-
+import userPhoto from '../../assets/photo/user-profile-icon-free-vector.jpg'
 const Navbar = () => {
     const [user] = useAuthState(auth);
     const [signOut] = useSignOut(auth);
@@ -71,8 +71,7 @@ const Navbar = () => {
 
                                         <div className="avatar flex justify-center align-middle ">
                                             <div className="w-12   my-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                                <img src={user?.photoURL || '../../../public/user-profile-icon-free-vector.jpg'} />
-                                            </div>
+                                                <img src={user?.photoURL || `${userPhoto}`} />                                            </div>
                                         </div>
                                         <button className="btn btn-error text-white" onClick={handleSignOut}>Log Out</button>
 
@@ -119,8 +118,7 @@ const Navbar = () => {
 
                                         <div className="avatar">
                                             <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                                <img src={user?.photoURL || '../../../public/user-profile-icon-free-vector.jpg'} />
-                                            </div>
+                                                <img src={user?.photoURL || `${userPhoto}`} />                                            </div>
                                         </div>
                                         <button className="btn btn-error text-white" onClick={handleSignOut}>Log Out</button>
                                     </div>

@@ -7,6 +7,8 @@ import axios from "axios";
 import SingleTask from "./SingleTask";
 import SingleOngoing from "./SingleOngoing";
 import SingleCompleted from "./SingleCompleted";
+import userPhoto from '../../assets/photo/user-profile-icon-free-vector.jpg'
+
 const Task = () => {
     const [user] = useAuthState(auth)
 
@@ -86,7 +88,7 @@ const Task = () => {
                             className="btn btn-ghost btn-circle avatar"
                         >
                             <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src={user?.photoURL || '../../../public/user-profile-icon-free-vector.jpg'} />
+                                <img src={user?.photoURL || <img src={user?.photoURL || `${userPhoto}`} />} />
                             </div>
                         </div>
                         <ul
