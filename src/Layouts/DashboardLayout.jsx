@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import taskIcon from '../assets/photo/task-1.png'
 import dashboardIcon from '../assets/photo/dashboard.png'
-import userPhoto from '../../src/assets/photo/user-profile-icon-free-vector.jpg'
+import userPhoto from '../assets/photo/user-profile-icon-free-vector.jpg'
 const DashboardLayout = () => {
     const [signOut] = useSignOut(auth);
     const [user] = useAuthState(auth);
