@@ -2,9 +2,27 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Components/Firebase/firebase.config";
 import { Link } from "react-router-dom";
 import plusIcon from '../../assets/photo/plus_icon.png'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import SingleTask from "./SingleTask";
 const Task = () => {
     const [user] = useAuthState(auth)
-    console.log(user)
+
+    const [tasks, setTasks] = useState();
+    console.log(tasks)
+    useEffect(() => {
+        async function load() {
+            const data = await axios.get('http://localhost:5000/task')
+
+            if (data?.status == 200) {
+                setTasks(data?.data)
+            }
+        }
+        load()
+    }, [])
+    const handleDeleteBike = (id) => {
+        setTasks(tasks.filter((task) => task._id !== id));
+    }
     return (
         // navbar start 
         <>
@@ -66,26 +84,28 @@ const Task = () => {
             </div>
             {/* nabvar 2 end */}
 
+
+
+
+
+
+
+
             <div className=" grid  gap-6  grid-cols-1 md:grid-cols-1 md:mx-w-full lg:grid-cols-3 justify-items-center lg:gap-2">
                 {/* card 1  */}
                 <div className="mr-5">
+
                     <div className=" bg-base-100 mb-2 border-2 flex justify-center">
                         <h2 className="card-title mr-8">To-Do List</h2>
 
                         <Link to={'/dashboard/addTask'} ><img className='ml-24 w-12 h-12' src={plusIcon} alt="" /></Link>
 
                     </div>
-                    <div className="card w-80 h-auto c mb-6  shadow-2xl">
-                        <div className="card-body">
-                            <h2 className="card-title">Title </h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-                            <p>deadlines</p>
-                            <p>priority</p>
+                    {
+                        tasks?.map(task => <SingleTask key={task?.id} task={task} oneDelete={handleDeleteBike} />)
+                    }
 
-                            <button className="btn btn-primary">Edit</button>
 
-                        </div>
-                    </div>
                 </div>
                 {/* card 2  */}
                 <div className="mr-5">
