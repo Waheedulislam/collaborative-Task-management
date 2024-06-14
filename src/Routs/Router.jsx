@@ -9,8 +9,8 @@ import DashboardHome from "../Pages/DashboardPage/DashboardHome";
 import Task from "../Pages/DashboardPage/Task";
 import ToDoList from "../Pages/DashboardPage/ToDoList";
 import OngoingList from "../Pages/DashboardPage/OngoingList";
-import CompletedList from "./CompletedList";
 import AddTask from "../Pages/DashboardPage/AddTask";
+import CompletedList from "../Pages/DashboardPage/CompletedList";
 
 const router = createBrowserRouter([
     {
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'CompletedList',
-                element: <CompletedList />
+                element: < CompletedList />
             },
             {
                 path: 'addTask',

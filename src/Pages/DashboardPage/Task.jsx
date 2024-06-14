@@ -5,12 +5,19 @@ import plusIcon from '../../assets/photo/plus_icon.png'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SingleTask from "./SingleTask";
+import SingleOngoing from "./SingleOngoing";
+import SingleCompleted from "./SingleCompleted";
 const Task = () => {
     const [user] = useAuthState(auth)
 
     const [tasks, setTasks] = useState();
+    const [ongoing, setOngoing] = useState();
+    const [completed, setCompleted] = useState();
     console.log(tasks)
+
+
     useEffect(() => {
+        // task 
         async function load() {
             const data = await axios.get('http://localhost:5000/task')
 
@@ -19,9 +26,40 @@ const Task = () => {
             }
         }
         load()
+
+        // Ongoing 
+        async function ongoingLoad() {
+            const data = await axios.get('http://localhost:5000/ongoing')
+
+            if (data?.status == 200) {
+                setOngoing(data?.data)
+            }
+        }
+        ongoingLoad()
+
+        // Completed 
+        async function completedLoad() {
+            const data = await axios.get('http://localhost:5000/completed')
+
+            if (data?.status == 200) {
+                setCompleted(data?.data)
+            }
+        }
+        completedLoad()
+
+
     }, [])
-    const handleDeleteBike = (id) => {
+    // task 
+    const handleDeleteTask = (id) => {
         setTasks(tasks.filter((task) => task._id !== id));
+    }
+    // ongoing
+    const handleDeleteOngoing = (id) => {
+        setOngoing(ongoing.filter((ongoing) => ongoing._id !== id));
+    }
+    // completed
+    const handleDeleteCompleted = (id) => {
+        setCompleted(completed.filter((completed) => completed._id !== id));
     }
     return (
         // navbar start 
@@ -87,7 +125,7 @@ const Task = () => {
 
 
 
-
+            {/* task  */}
 
 
 
@@ -102,12 +140,18 @@ const Task = () => {
 
                     </div>
                     {
-                        tasks?.map(task => <SingleTask key={task?.id} task={task} oneDelete={handleDeleteBike} />)
+                        tasks?.map(task => <SingleTask key={task?.id} task={task} oneDelete={handleDeleteTask} />)
                     }
 
 
                 </div>
+
+
+
                 {/* card 2  */}
+
+
+
                 <div className="mr-5">
                     <div className=" bg-base-100 mb-2 border-2 flex justify-center">
                         <h2 className="card-title mr-8">Ongoing list</h2>
@@ -115,15 +159,15 @@ const Task = () => {
                         <Link to={'/dashboard/OngoingList'} ><img className='ml-24 w-12 h-12' src={plusIcon} alt="" /></Link>
 
                     </div>
-                    <div className="card w-80 h-auto  bg-base-100 mb-6 shadow-xl">
-                        <div className="card-body">
-                            <h2 className="card-title"> title!</h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-                            <p>deadlines</p>
-                            <p>priority</p>
-                            <button className="btn btn-primary">Edit</button>
-                        </div>
-                    </div></div>
+
+                    {
+                        ongoing?.map(ongoing => <SingleOngoing key={ongoing?.id} ongoing={ongoing} oneDelete={handleDeleteOngoing} />)
+                    }
+
+
+                </div>
+
+                {/* card 3  */}
                 <div>
                     <div className=" bg-base-100 mb-2 border-2 flex justify-center">
                         <h2 className="card-title mr-8">Completed list</h2>
@@ -131,15 +175,10 @@ const Task = () => {
                         <Link to={'/dashboard/CompletedList'} ><img className='ml-24 w-12 h-12' src={plusIcon} alt="" /></Link>
 
                     </div>
-                    <div className="card w-80 h-auto  bg-base-100 mb-6 shadow-xl">
-                        <div className="card-body">
-                            <h2 className="card-title"> title!</h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-                            <p>deadlines</p>
-                            <p>priority</p>
-                            <button className="btn btn-primary">Edit</button>
-                        </div>
-                    </div></div>
+                    {
+                        completed?.map(completed => <SingleCompleted key={completed?.id} completed={completed} oneDelete={handleDeleteCompleted} />)
+                    }
+                </div>
             </div>
         </>
     );

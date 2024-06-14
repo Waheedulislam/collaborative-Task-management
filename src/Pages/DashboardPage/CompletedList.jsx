@@ -4,10 +4,11 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const OngoingList = () => {
+
+const CompletedList = () => {
     const [deadline, setDeadline] = useState(new Date());
 
-    const handleCreateOngoing = async (e) => {
+    const handleCreateCompleted = async (e) => {
         e.preventDefault();
 
         const form = e.target;
@@ -16,14 +17,14 @@ const OngoingList = () => {
         const priority = form.priority.value;
         const description = form.description.value;
 
-        const ongoingData = {
+        const completedData = {
             title,
             priority,
             deadline,
             description,
         };
-        console.log(ongoingData)
-        const success = await axios.post('http://localhost:5000/ongoing', ongoingData);
+        console.log(completedData)
+        const success = await axios.post('http://localhost:5000/completed', completedData);
         if (success) {
             alert('Do you want to make a product ?')
         }
@@ -41,7 +42,7 @@ const OngoingList = () => {
 
                         </div>
                         <div className="card shrink-0 w-full max-w-lg max-h-lg shadow-2xl bg-base-100">
-                            <form onSubmit={handleCreateOngoing} className="card-body">
+                            <form onSubmit={handleCreateCompleted} className="card-body">
                                 <h1 className="text-4xl font-bold text-center">Add a Task !</h1>
                                 {/* title  */}
                                 <div className="form-control">
@@ -107,4 +108,4 @@ const OngoingList = () => {
     );
 };
 
-export default OngoingList;
+export default CompletedList;

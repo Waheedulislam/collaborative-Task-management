@@ -1,19 +1,17 @@
 /* eslint-disable react/prop-types */
-
 import axios from "axios";
 import { toast } from "react-toastify";
 
-// eslint-disable-next-line react/prop-types, no-unused-vars
-const SingleTask = ({ task, oneDelete }) => {
+const SingleCompleted = ({ completed, oneDelete }) => {
     const handleDelete = async () => {
 
-        const deleteSuccess = await axios.delete(`http://localhost:5000/task/${task?._id}`);
+        const deleteSuccess = await axios.delete(`http://localhost:5000/completed/${completed?._id}`);
         if (deleteSuccess) {
             alert('Do you want to delete a product ?')
 
         }
         toast.success("Delete Successfully....!")
-        const deleteProduct = oneDelete(task?._id);
+        const deleteProduct = oneDelete(completed?._id);
         deleteProduct();
     };
     return (
@@ -21,12 +19,13 @@ const SingleTask = ({ task, oneDelete }) => {
 
             <div className="card w-80 h-auto c mb-6  shadow-2xl">
                 <div className="card-body">
-                    <h2 className="card-title">{task?.title} </h2>
-                    <p>Deadlines : {task?.deadline}</p>
-                    <p>Priority : {task?.priority}</p>
+                    <h2 className="card-title">{completed?.title} </h2>
+                    <p>Deadlines : {completed?.deadline}</p>
+                    <p>Priority : {completed?.priority}</p>
                     <p>
-                        {task?.description?.length > 30 ? task?.description?.slice(0, 60) : task?.description}
+                        {completed?.description?.length > 30 ? completed?.description?.slice(0, 60) : completed?.description}
                     </p>
+
                     <button className="btn btn-primary">Edit</button>
 
                     <button onClick={handleDelete} className="btn btn-error text-white">Delete</button>
@@ -37,4 +36,4 @@ const SingleTask = ({ task, oneDelete }) => {
     );
 };
 
-export default SingleTask;
+export default SingleCompleted;
